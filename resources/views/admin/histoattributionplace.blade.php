@@ -1,17 +1,17 @@
 @extends('head.admin')
 @section('content')
-<div style="text-align: center;">
+<link rel="stylesheet" href="css/histoattributions.css">
 <div class="shadow-lg p-3 mb-5 bg-white rounded">
-    <h3 align="center" style="color:#00DFF9";>HISTORIQUE DES RESERVATIONS</h3>
+    <h3>Historique de reservations</h3>
 </div>
-<div class="container mb-3 mt-3">
-        <table class="table">
+<div class="container">
+        <table class="table table-bordered">
             <thead>
-           <th scope="col">Id de la réservation</th>
-           <th scope="col">position dans la file d'attente</th>
-           <th scope="col">Numero de la place attribuée</th>
-           <th scope="col">utilisateur</th>
-           <th scope="col">Etat de la réservation</th>
+           <th scope="col">Id réservation</th>
+           <th scope="col">Position file d'attente</th>
+           <th scope="col">Numero place attribuée</th>
+           <th scope="col">Utilisateur</th>
+           <th scope="col">Etat réservation</th>
            <th scope="col">Date début de la réservation</th>
            <th scope="col">Date fin de la réservation</th>
         </thead>

@@ -1,23 +1,24 @@
 @extends('head.admin')
 @section('content')
-
+<link rel="stylesheet" href="css\listeutilisateur.css">
 
 <div class="shadow-lg p-3 mb-5 bg-white rounded">
     <form action="demandesinscriptions" method="get">
         @csrf
         <input type="hidden" name="id" value={{$_POST['id']}}>
-        <button type="submit" class="btn btn-info">Voir demandes d'inscription</button>
-    </form>
-    <h3 align="center" style="color:#00DFF9">LISTE DES UTILISATEURS</h3>
-</div>
-    <table class="table">
 
-        <th scope="col">Id de l'utilisateur </th>
-        <th scope="col">Pseudo de l'utilisateur </th>
-        <th scope="col">Nom de l'utilisateur </th>
-        <th scope="col">Prénom de l'utlisateur </th>
-        <th scope="col">Mail de l'utilisateur </th>
-        <th scope="col">MDP Oublié? </th>
+    </form>
+    <h3>Liste Utilisateurs</h3>
+</div>
+<div class="container">
+    <table class="table table-bordered">
+        <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Pseudo</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prénom</th>
+        <th scope="col" colspan="2" >Mail</th>
+        <th scope="col">Mot de passe</th>
         </tr>
         @foreach ($listeUtilisateur as $listeUtilisateurdata)
         <?php $idUtilisateur = $listeUtilisateurdata->idUtilisateur; ?>
@@ -29,12 +30,12 @@
                 <td>{{$listeUtilisateurdata->nomUtilisateur}}</td>
                 <td>{{$listeUtilisateurdata->nom}}</td>
                 <td>{{$listeUtilisateurdata->prenom}}</td>
-                <td>{{$listeUtilisateurdata->mail}}</td>
+                <td colspan="2">{{$listeUtilisateurdata->mail}}</td>
                 <td>
                     @if ($listeUtilisateurdata->motDePasseOublie == 0)
-                        <button type="submit" class="btn btn-primary">Modifier</button>
+                        <button type="submit" class=" btn-primary">Modifier</button>
                     @else
-                        <button type="submit" class="btn btn-danger">Modifier</button>
+                        <button type="submit" class=" btn-danger">Modifier</button>
                     @endif
                 </td>
             </tr>
@@ -42,4 +43,11 @@
         @endforeach
         </tbody>
     </table>
+    <form action="demandesinscriptions" method="get">
+        @csrf
+        <input type="hidden" name="id" value={{$_POST['id']}}>
+        <button type="submit" class="bouton">Voir demandes d'inscription</button>
+    </form>
+</div>
+
 @endsection

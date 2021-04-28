@@ -98,4 +98,12 @@ class connexion extends Controller
             return view('motdepasseoublie', compact('error'));
         }
     }
+
+    public function testmail()
+    {
+        $mail = "MAIL";
+
+        Mail::to('victor.ltalamon@gmail.com')->send(new Testmail($mail));
+        return "E-Mail envoyé";
+    }
 }

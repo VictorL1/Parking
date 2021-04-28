@@ -7,13 +7,13 @@ $valide = 0;
 ?>
 @extends('head.user')
 @section('content')
-<center>
-    <h2> Vos Réservations </h2>
-</center>
+<link rel="stylesheet" href="css\reservation.css">
+    <h2 class="h2"> Vos Réservations </h2>
+
 <br>
 @if ($dbreserv[0] == 0)
 <div class="container mb-3 mt-3">
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
             <th scope="col">Réservation N°</th>
             <th scope="col">File d'attente</th>
@@ -69,7 +69,7 @@ $valide = 0;
                         @if ($annule == 0)
                         <button type="submit" value={{$reservdata -> idReservation}}
                             onclick='return confirm("Êtes-vous sûr de vouloir annuler la reservation ?")' name="id"
-                            class="btn btn-danger">Annuler</button>
+                            class="btn-danger">Annuler</button>
                         @endif
                     </form>
                 </td>
@@ -79,7 +79,7 @@ $valide = 0;
     </table>
 </div>
 @else
-<center> Aucune réservation effectuée </center>
+<h2 class="h2"> Aucune réservation effectuée </h2>
 @endif
 <?php Log::debug($annule); ?>
 @if ($valide == 1 || $dbreserv[0] != 0)
@@ -88,7 +88,7 @@ $valide = 0;
         <input type="hidden" name="iduser" value={{$info[0]}}>
         <div class="container mb-3 mt-3">
             <p class="text-center">
-                <button type="submit" class="btn btn-success">Faire une réservation</button>
+                <button type="submit" class="btn-success">Faire une réservation</button>
             </p>
         </div>
     </form>
