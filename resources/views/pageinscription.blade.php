@@ -10,19 +10,19 @@ Log::debug($error);
     @if ($error == 1)
         <center>
             <p class="bg-light border border-danger">
-                Le nom d'utilisateur est déjà pris
+                Le nom d'utilisateur est déjà prit
             </p>
         </center>
     @elseif($error ==  2)
         <center>
             <p class="bg-light border border-danger">
-                L'e-mail à déja était utilisé
+                L'e-mail a déja était utilisé
             </p>
         </center>
     @elseif($error ==  3)
         <center>
             <p class="bg-light border border-danger">
-                Les mots de passes ne sont pas identiques
+                Les mots de passe ne sont pas identiques
             </p>
         </center>
     @endif
@@ -41,26 +41,16 @@ Log::debug($error);
             <input type="email" class="form-control" name="mail" placeholder="Adresse E-Mail" required>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" id="mdp" name="password" placeholder="Mot de passe" maxlength="30" required>
+            <input type="password" class="form-control" id="mdp" name="password" placeholder="Mot de passe" required>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" name="newpassword" placeholder="Confirmation du mot de passe" maxlength="30" required>
+            <input type="password" class="form-control" name="newpassword" placeholder="Confirmation du mot de passe" required>
         </div>
-        <input type="checkbox" onclick="myFunction()">Montrer mot de passe
-        <br>
+
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">Inscription</button>
+            <button type="submit" class="btn btn-outline-success">Inscription</button>
         </div>
     </form>
 </div>
 @endsection
-<script>
-    function myFunction() {
-        var x = document.getElementById("mdp");
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
-        }
-    }
-</script>
+

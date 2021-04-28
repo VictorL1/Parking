@@ -30,8 +30,8 @@ Route::get('Inscription', function () {
 
 Route::get('inscriptionexe', [connexion::class, 'inscriptionexe']);
 
-Route::get('mdpoublie', function () {
-    return view('mdpoublie');
+Route::get('motdepasseoublie', function () {
+    return view('motdepasseoublie');
 });
 
 Route::get('oublie', [connexion::class, 'reinitialisemdp']);
@@ -41,7 +41,6 @@ Route::get('testAdmin', [admin::class, 'test']);
 Route::get('modificationFileAttente/updateFileAttente/{idReservation}', [admin::class, 'listeattente']);
 
 Route::get('demandesinscriptions', [admin::class, 'demandesinscriptions']);
-
 
 Route::post('ListeAttente', [admin::class, 'listeattente']);
 
@@ -53,9 +52,9 @@ Route::post('modificationFileAttente/updateFileAttente/{idReservation}', [admin:
 
 Route::get('modificationFileAttente/{idReservation}', [admin::class, 'show']);
 
-Route::get('toutaccepter', [admin::class,'accepterToutesLesInscriptions']);
+Route::get('toutaccepter', [admin::class, 'accepterToutesLesInscriptions']);
 
-Route::get('toutrefuser', [admin::class,'refuserToutesLesInscriptions']);
+Route::get('toutrefuser', [admin::class, 'refuserToutesLesInscriptions']);
 
 Route::get('accepterInscription/{idUtilisateur}', [admin::class, 'accepterInscription']);
 
@@ -72,12 +71,12 @@ Route::post('ModificationMDP', [user::class, 'formMDP']);
 Route::post('ModificationConfirmation', [user::class, 'confirmMDP']);
 
 Route::get('testinscription', function () {
-    return view ('testinscriptionform');
+    return view('testinscriptionform');
 });
 
 Route::post('testinscriptionresultat', [test::class, 'testinscription']);
 
-Route::get('/modificationMdpUtilisateur/{idUtilisateur}',[admin::class,'showModifMdp']);
+Route::get('/modificationMdpUtilisateur/{idUtilisateur}', [admin::class, 'showModifMdp']);
 
 Route::post('/updateMotDePasse', [admin::class, 'updateMotDePasse']);
 

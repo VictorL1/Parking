@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use App\Mail\Testmail;
 use Illuminate\Support\Facades\Mail;
@@ -23,28 +24,25 @@ class connexion extends Controller
         $pswd = $_POST['pswd'];
         $connect = utilisateur::select('*')->where('nomUtilisateur', '=', $user)->get();
         foreach ($connect as $connectdata) {
-            $utilisateur = $connectdata -> nomUtilisateur;
-            $id = $connectdata -> idUtilisateur;
-            $motdepasse = $connectdata -> motDePasseUtilisateur;
-            $inscrit = $connectdata -> estInscrit;
-            $admin = $connectdata -> isAdministrateur;
+            $utilisateur = $connectdata->nomUtilisateur;
+            $id = $connectdata->idUtilisateur;
+            $motdepasse = $connectdata->motDePasseUtilisateur;
+            $inscrit = $connectdata->estInscrit;
+            $admin = $connectdata->isAdministrateur;
         }
         if ($utilisateur != null && Hash::check($pswd, $motdepasse)) {
             if ($inscrit == 0) {
                 $error = 2;
                 return view('pageconnexion', compact('error'),);
-            }
-            else {
+            } else {
                 if ($admin == 0) {
                     $action = 1;
                     return view('user.acceuiluser', compact('id'), compact('action'));
-                }
-                else {
+                } else {
                     return view('admin.acceuiladmin', compact('id'));
                 }
             }
-        }
-        else {
+        } else {
             $error = 1;
             return view('pageconnexion', compact('error'));
         }
@@ -55,10 +53,10 @@ class connexion extends Controller
         $verif = utilisateur::select('*')->get();
         $error = 0;
         foreach ($verif as $verifdata) {
-            if ($verifdata -> nomUtilisateur == $_GET['user']) {
+            if ($verifdata->nomUtilisateur == $_GET['user']) {
                 $error = 1;
             }
-            if ($verifdata -> mail == $_GET['mail']) {
+            if ($verifdata->mail == $_GET['mail']) {
                 $error = 2;
             }
         }
@@ -83,11 +81,10 @@ class connexion extends Controller
         // return back();
         return view('pageinscription', compact('error'));
     }
-
     public function reinitialisemdp()
     {
         $error = 2;
-        $verif = utilisateur::select('mail')->where('isAdministrateur','=',false)->get();
+        $verif = utilisateur::select('mail')->where('isAdministrateur', '=', false)->get();
         foreach ($verif as $verifdata) {
             if ($verifdata->mail == $_GET['email']) {
                 $error = 3;
@@ -95,20 +92,10 @@ class connexion extends Controller
         }
         if ($error == 3) {
             $error = 5;
-            utilisateur::where('mail', '=',$_GET['email'])->update(array('motDePasseOublie' => true));
+            utilisateur::where('mail', '=', $_GET['email'])->update(array('motDePasseOublie' => true));
             return view('pageconnexion', compact('error'));
+        } else {
+            return view('motdepasseoublie', compact('error'));
         }
-        else {
-            return view('mdpoublie', compact('error'));
-        }
-
-    }
-
-    public function testmail()
-    {
-        $mail = "ceci est un texte";
-
-        Mail::to('araujohugo@msn.com')->send(new Testmail($mail));
-        return "E-Mail envoyer";
     }
 }
