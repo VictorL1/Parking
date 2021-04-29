@@ -17,7 +17,7 @@ $valide = 0;
         <thead>
             <th scope="col">Réservation N°</th>
             <th scope="col">File d'attente</th>
-            <th scope="col">Nombre de place</th>
+            <th scope="col">Numéro de place</th>
             <th scope="col">Début Date Réservation</th>
             <th scope="col">Date limite</th>
             <th scope="col">Etat de la reservation</th>
