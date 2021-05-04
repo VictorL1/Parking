@@ -77,13 +77,13 @@ class DatabaseSeeder extends Seeder
         ));
         reservation::insert(array(
             array(
-                'idReservation' => 2, 'positionFileAttente' => 1, 'numeroPlace' => 1, 'utilisateur' => rand(2, 4), 'etatReservation' => rand(0, 1), 'dateDebut' => '2020/08/10', 'dateFin' => '2020/04/17',
+                'idReservation' => 2, 'positionFileAttente' => 1, 'numeroPlace' => 1, 'utilisateur' => 2, 'etatReservation' => 0, 'dateDebut' => date('Y-m-d'), 'dateFin' => date('Y-m-d', strtotime('+1 month')),
             ),
             array(
-                'idReservation' => 3, 'positionFileAttente' => null, 'numeroPlace' => null, 'utilisateur' => rand(2, 4), 'etatReservation' => rand(0, 1), 'dateDebut' => '2020/01/29', 'dateFin' => '2020/01/20',
+                'idReservation' => 3, 'positionFileAttente' => null, 'numeroPlace' => null, 'utilisateur' => 3, 'etatReservation' => 1, 'dateDebut' => date('Y-m-d'), 'dateFin' => date('Y-m-d', strtotime('+1 month')),
             ),
             array(
-                'idReservation' => 4, 'positionFileAttente' => 2, 'numeroPlace' => 2, 'utilisateur' => rand(2, 4), 'etatReservation' => rand(0, 1), 'dateDebut' => '2020/01/29', 'dateFin' => '2020/01/20',
+                'idReservation' => 4, 'positionFileAttente' => 2, 'numeroPlace' => 2, 'utilisateur' => 4, 'etatReservation' => 1, 'dateDebut' => date('Y-m-d'), 'dateFin' => date('Y-m-d', strtotime('+1 month')),
             ),
         ));
     }

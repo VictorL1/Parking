@@ -47,6 +47,18 @@
                     <button type="submit"  class="btn">Liste des utilisateurs</button>
             </form>
 
+            <form action="/ListePlace" method="post">
+                @csrf
+                <input type="hidden" name="id" value={{$id}}>
+                    <button type="submit" class="btn">Liste des Places</button>
+            </form>
+
+            <form action="/ListeReservation" method="post">
+                @csrf
+                <input type="hidden" name="id" value={{$id}}>
+                    <button type="submit" class="btn">Liste des reservations</button>
+            </form>
+
             <form action="/HistoAttributionPlace" method="post">
                 @csrf
                 <input type="hidden" name="id" value={{$id}}>

@@ -20,7 +20,7 @@
             La demande de modification de mot de passe à était envoyée
         </p>
     @endif
-    <form action="/" method="post">
+    <form action="/connexion" method="post">
         @csrf
         <h2>Connexion</h2>
         <div class="form-group">

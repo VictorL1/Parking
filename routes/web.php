@@ -18,11 +18,11 @@ use App\Http\Controllers\user;
 |
 */
 
-Route::get('/', function () {
-    return view('pageconnexion');
-});
+Route::get('test', [user::class, 'test']);
 
-Route::post('/', [connexion::class, 'connexion']);
+Route::get('/', [connexion::class, 'verification']);
+
+Route::post('/connexion', [connexion::class, 'connexion']);
 
 Route::get('Inscription', function () {
     return view('pageinscription');
@@ -30,8 +30,8 @@ Route::get('Inscription', function () {
 
 Route::get('inscriptionexe', [connexion::class, 'inscriptionexe']);
 
-Route::get('motdepasseoublie', function () {
-    return view('motdepasseoublie');
+Route::get('mdpoublie', function () {
+    return view('mdpoublie');
 });
 
 Route::get('oublie', [connexion::class, 'reinitialisemdp']);
@@ -42,9 +42,20 @@ Route::get('modificationFileAttente/updateFileAttente/{idReservation}', [admin::
 
 Route::get('demandesinscriptions', [admin::class, 'demandesinscriptions']);
 
+
 Route::post('ListeAttente', [admin::class, 'listeattente']);
 
 Route::post('ListeUtilisateur', [admin::class, 'listeutilisateur']);
+
+Route::post('ListePlace', [admin::class, 'listeplace']);
+
+Route::post('AjoutPlace', [admin::class, 'ajoutplace']);
+
+Route::post('DeletePlace', [admin::class, 'deleteplace']);
+
+Route::post('ListeReservation', [admin::class, 'listereservation']);
+
+Route::post('AnnuleReservation', [admin::class, 'annulereservation']);
 
 Route::post('HistoAttributionPlace', [admin::class, 'histoattributionplace']);
 
